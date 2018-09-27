@@ -104,7 +104,7 @@ for (i in 1:100) {
 	print(sig_importances)
 
 	#generate AUC curve for model
-	file_path <- paste("~/AUC_Plots/HA_Healthy_Asthma_Caret_RF_Plot_IT", iteration_number, "_CAARS_ONLY_Normalized.pdf", sep="")
+	file_path <- paste("~/HA_Healthy_Asthma_Caret_RF_Plot_IT", iteration_number, "_CAARS_ONLY_Normalized.pdf", sep="")
 	pdf(file_path)
 	plot <- plot(model, main = "Random Forest Model Variable Selection for HA_Healthy_Asthma_Median - Caret Control")
 	print(plot)
@@ -120,7 +120,7 @@ roc_summary_train <- roc_summary_train %>% group_by(sensitivity) %>% summarize(s
 perfect_sensitivity <- c(1, 0) #add in data point for perfect sensitivity
 perfect_specificity <- c(0, 1) #add in data point for perfect specificity
 roc_summary_train <- rbind(roc_summary_train, perfect_sensitivity, perfect_specificity)
-pdf("~/AUC_Plots/HA_Healthy_Asthma_Caret_RF_ROC_Curve_Training_CAARS_ONLY_Normalized.pdf")
+pdf("~/HA_Healthy_Asthma_Caret_RF_ROC_Curve_Training_CAARS_ONLY_Normalized.pdf")
 ggplot(data = roc_summary_train) + 
 	geom_step(mapping = aes(x = (1-specificity), y = parse_number(roc_summary_train$sensitivity)), color = "blue", direction = "vh") + #generate roc curve
 	geom_abline(intercept = 0, slope = 1) + #line of equal specificity and sensitivity
@@ -138,7 +138,7 @@ roc_summary_test <- roc_summary_test %>% group_by(sensitivity) %>% summarize(spe
 perfect_sensitivity <- c(1, 0) #add in data point for perfect sensitivity
 perfect_specificity <- c(0, 1) #add in data point for perfect specificity
 roc_summary_test <- rbind(roc_summary_test, perfect_sensitivity, perfect_specificity)
-pdf("~/AUC_Plots/HA_Healthy_Asthma_Caret_RF_ROC_Curve_Testing_CAARS_ONLY_Normalized.pdf")
+pdf("~/HA_Healthy_Asthma_Caret_RF_ROC_Curve_Testing_CAARS_ONLY_Normalized.pdf")
 ggplot(data = roc_summary_test) + 
 	geom_step(mapping = aes(x = (1-specificity), y = parse_number(roc_summary_test$sensitivity)), color = "blue", direction = "vh") + #generate roc curve
 	geom_abline(intercept = 0, slope = 1) + #line of equal specificity and sensitivity

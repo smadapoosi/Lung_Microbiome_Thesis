@@ -7,7 +7,7 @@ library(plyr)
 library(dplyr)
 
 #prepare data set for rf model generation
-otu_matrix <- read.csv("IL_5_Continuous_Caret_RF.dna.otu.caarsonly.normalized.csv")
+otu_matrix <- read.csv("~/IL_5_Continuous_Caret_RF.dna.otu.caarsonly.normalized.csv")
 otu_matrix_otus <- otu_matrix[, 3:ncol(otu_matrix)] #assign only otus to this matrix
 response <- otu_matrix[, 2] #assign environmental variable to this matrix
 #sample_category <- factor(sample_category)
@@ -73,7 +73,7 @@ for (i in 1:100) {
 	print(sig_importances) #print importances for top 25 OTUs
 
 	#generate AUC curve for model
-	file_path <- paste("AUC_Plots/IL_5_Continuous_Continuous_Caret_Continuous_Plot_IT", iteration_number, "_CAARS_ONLY_Normalized.pdf", sep="")
+	file_path <- paste("~/IL_5_Continuous_Continuous_Caret_Continuous_Plot_IT", iteration_number, "_CAARS_ONLY_Normalized.pdf", sep="")
 	pdf(file_path)
 	plot <- plot(model, main = "Random Forest Model Variable Selection for IL_5_Continuous Continuous")
 	print(plot)
@@ -83,9 +83,9 @@ for (i in 1:100) {
 colnames(predicted) <- c("Actual", "Predicted")
 predicted <- data.frame(predicted)
 aggregated <- ddply(predicted, 'Actual', summarize, Mean_Predicted = mean(Predicted)) #aggregate mean of predicted IL_5_Continuous_Continuous for each level of actual IL_5_Continuous_Continuous
-write.table(aggregated, file = "IL_5_Continuous_Continuous_Caret_Prediction_vs._Actual.txt")
+write.table(aggregated, file = "~/IL_5_Continuous_Continuous_Caret_Prediction_vs._Actual.txt")
 #write.table(predicted, file = "IL_5_Continuous_Continuous_Caret_Prediction_vs._Actual.txt")
-pdf("IL_5_Continuous_Continuous_Caret_Prediction_vs._Actual_Plot.pdf")
+pdf("~/IL_5_Continuous_Continuous_Caret_Prediction_vs._Actual_Plot.pdf")
 ggplot(data = aggregated) +
 geom_point(mapping = aes(x = Actual, y = Mean_Predicted), color = "blue") +
 geom_smooth(mapping = aes(x = Actual, y = Mean_Predicted), method = "lm") +
