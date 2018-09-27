@@ -154,9 +154,10 @@ for (i in 1:100) {
 		training_type_2_error <- 0 #adjust for rounding in R
 	}
 
-	#****************************#
+	#***********#
+	#Testing Set#
+	#***********#
 
-	#Testing Set Generation
 	unsampled_cases <- setdiff(cases, cases_sample) #generate list of cases for testing data set not in the training sample
 	unsampled_controls <- setdiff(controls, controls_sample) #generate list of controls for testing data set not in the training sample
 	testing_data_cases <- data[unsampled_cases, ] #subsets bmi data set by cases
