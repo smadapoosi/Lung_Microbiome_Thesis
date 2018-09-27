@@ -4,17 +4,19 @@ library(car)
 library(dunn.test) #Dunn post-hoc test
 source('games_howell.R') # Games-Howell post hoc test https://gist.github.com/aschleg/ea7942efc6108aedfa9ec98aeb6c2096#file-games_howell-r
 
-rf <- read.table("~/T_FLAVAN3OLS_Caret_RF_Output_Model_AUC_CV.CAARS_ONLY_Normalized.txt")
+#Read in list of AUCs from all 100 resampling iterations from each algorithm
+rf <- read.table("~/T_FLAVAN3OLS_Caret_RF_Output_Model_AUC_CV.CAARS_ONLY_Normalized.txt") #random forest
 rf <- cbind(rf, rep("RF", n = nrow(rf)))
 colnames(rf) <- c("AUC", "Model")
-svm <- read.table("~/T_FLAVAN3OLS_Caret_SVM_Output_Model.CAARS_ONLY_Normalized.txt.AUCs.txt")
+svm <- read.table("~/T_FLAVAN3OLS_Caret_SVM_Output_Model.CAARS_ONLY_Normalized.txt.AUCs.txt") #SVM non-RFE
 svm <- cbind(svm, rep("SVM", n = nrow(svm))) #add label to these
 colnames(svm) <- c("AUC", "Model")
-svm_rfe <- read.table("~/T_FLAVAN3OLS_Caret_SVM_RFE_Output_Model.CAARS_ONLY_Normalized.txt.AUCs.txt")
+svm_rfe <- read.table("~/T_FLAVAN3OLS_Caret_SVM_RFE_Output_Model.CAARS_ONLY_Normalized.txt.AUCs.txt") #SVM-RFE
 svm_rfe <- cbind(svm_rfe, rep("SVM-RFE", n = nrow(svm_rfe))) #add label to these
 colnames(svm_rfe) <- c("AUC", "Model")
 auc_table <- rbind(rf, svm, svm_rfe) #aggregate data table with column 1 being method and column 2 being AUCs
 
+#Select which asterisk to display on graph for significane
 asterisk_selection <- function(n) {
 	label <- NULL
 	if(n > 0.05) {
@@ -98,8 +100,8 @@ pdf(paste("~/T_FLAVAN3OLS_AUCs_Boxplot.pdf", sep=""))
 p <- ggplot(data = auc_table) +
 	geom_boxplot(mapping = aes(x = Model, y = AUC, fill = Model)) +
  	geom_line(data = df1, aes(x = a, y = b)) + annotate("text", x = 1.5, y = 1.25, label = asterisk_annot_1, size = 8, color = "red") +
-    geom_line(data = df2, aes(x = a, y = b)) + annotate("text", x = 2, y = 1.30, label = asterisk_annot_2, size = 8, color = "red") +
-    geom_line(data = df3, aes(x = a, y = b)) + annotate("text", x = 2.5, y = 1.25, label = asterisk_annot_3, size = 8, color = "red") + 
+ 	geom_line(data = df2, aes(x = a, y = b)) + annotate("text", x = 2, y = 1.30, label = asterisk_annot_2, size = 8, color = "red") +
+ 	geom_line(data = df3, aes(x = a, y = b)) + annotate("text", x = 2.5, y = 1.25, label = asterisk_annot_3, size = 8, color = "red") + 
 	annotate("text", x = 0.25, y = 1.4, label = paste(test_name, " P-Value = ", signif(stat.test.p.value, digits = 3), " (", asterisk_naive, ")", sep = ''), hjust = 0, vjust = 1, size = 4, color = 'red') + 
 	annotate("text", x = 0.25, y = 1.39, label = paste("BH-Corrected P-Value = ", p_val, " (", asterisk, ")", sep = ''), hjust = 0, vjust = 2.5, size = 4, color = 'red') + 
 	labs(x = "Classification Method", y = "Cross-Validated Training AUC") +
