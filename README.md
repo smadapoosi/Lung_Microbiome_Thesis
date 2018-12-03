@@ -15,15 +15,15 @@ Asthma is an obstructive airway disease characterized by episodic and reversible
 ## Contributing:
 
 ## References:
-Dougherty, D. et al. (2007). National Asthma Education and Prevention Program, 
-   Third Expert Panel on the Diagnosis and Management of Asthma. Bethesda (MD): National Heart, Lung, and Blood Institute (US).     
-   https://www.nhlbi.nih.gov/files/docs/guidelines/asthsumm.pdf
-Huang, Y. J., Boushey, H. A. (2015, January). The Microbiome in Asthma. Journal of Allergy 
-    and Clinical Immunology, 135(1), 25-30. doi:10.1016/j.jaci.2014.11.011.
-Jia, C. E., Zhang, H. P. Lv, Y. et al. (2013). The Asthma Control Test and Asthma Control 
-    Questionnaire for assessing asthma control: Systematic review and meta-analysis. The Journal of Allergy and Clinical Immunology, 
-    131(3), 696-703. doi:doi.org/10.1016/j.jaci.2012.08.023.
-Loftus, P. A., Wise, S. K. (2016) Epidemiology of asthma. Current Opinion in Otolaryngology 
+Dougherty, D. et al. (2007). National Asthma Education and Prevention Program, <br />
+   Third Expert Panel on the Diagnosis and Management of Asthma. Bethesda (MD): National Heart, Lung, and Blood Institute (US). <br />    
+   https://www.nhlbi.nih.gov/files/docs/guidelines/asthsumm.pdf <br />
+Huang, Y. J., Boushey, H. A. (2015, January). The Microbiome in Asthma. Journal of Allergy <br />  
+    and Clinical Immunology, 135(1), 25-30. doi:10.1016/j.jaci.2014.11.011.<br />  
+Jia, C. E., Zhang, H. P. Lv, Y. et al. (2013). The Asthma Control Test and Asthma Control <br />  
+    Questionnaire for assessing asthma control: Systematic review and meta-analysis. The Journal of Allergy and Clinical Immunology, <br />  
+    131(3), 696-703. doi:doi.org/10.1016/j.jaci.2012.08.023. <br />  
+Loftus, P. A., Wise, S. K. (2016) Epidemiology of asthma. Current Opinion in Otolaryngology <br />  
     & Head and Neck Surgery, 24(3), 245-249. doi:10.1097/MOO.0000000000000262.
 
 
